@@ -1,0 +1,86 @@
+@use 'sass:math';
+
+:host {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #fff;
+
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+    }
+
+
+    .video-container {
+        position: relative;
+        width: 70%;
+        padding-bottom: calc(.5625 * 70%);
+
+        @media only screen and (max-width: 1000px) {
+            width: 60%;
+            padding-bottom: calc(.5625 * 60%);
+        }
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+            padding-bottom: calc(.5625 * 100%);
+        }
+
+        .no-videos {
+            $full-font: 18px;
+            $half-font: math.div($full-font, 2);
+            
+            position: absolute;
+            text-align: center;
+            font-size: $full-font;
+            top: calc(50% - #{$half-font});
+            width: 100%;
+        }
+    }
+
+    &.theatre {
+        .video-container {
+            width: 100%;
+            padding-bottom: calc(.5625 * 100%);
+        }
+    }
+
+    .queue {
+        &-container {
+            img {
+                border: 1px solid black;
+            }
+            img, button {
+                vertical-align: bottom;
+            }
+
+            padding: 0 15px;
+        }
+
+        &-item {
+            padding: 10px 0;
+        }
+    }
+
+    label {
+        display: block;
+    }
+
+    button[type="submit"] {
+        margin-left: 10px;
+    }
+}
+
+:host-context(.dark) {
+    :host {
+        background-color: #000;
+
+        .queue {
+            &-container {
+                img {
+                    border-color: #fff;
+                }
+            }
+        }
+    }
+}

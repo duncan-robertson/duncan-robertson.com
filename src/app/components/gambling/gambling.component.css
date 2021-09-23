@@ -1,0 +1,15 @@
+dice {
+    display: inline-block;
+}
+
+.lose-message {
+    color: red;
+}
+
+.win-message {
+    color: green;
+}
+
+ul {
+    list-style: disc;
+}
