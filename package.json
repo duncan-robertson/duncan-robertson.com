@@ -1,0 +1,41 @@
+{
+  "name": "duncan-robertson.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -c webpack.dev.js",
+    "watch": "webpack -c webpack.dev.js --watch",
+    "build-release": "webpack -c webpack.prod.js",
+    "start": "node server.js"
+  },
+  "author": "Duncan Robertson",
+  "license": "ISC",
+  "devDependencies": {
+    "@angular/compiler-cli": "^12.1.1",
+    "@ngtools/webpack": "^12.1.1",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "html-webpack-plugin": "^5.3.2",
+    "raw-loader": "^4.0.2",
+    "sass": "^1.37.5",
+    "sass-loader": "^12.1.0",
+    "script-ext-html-webpack-plugin": "^2.1.5",
+    "typescript": "^4.3.5",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@angular/common": "^12.1.1",
+    "@angular/compiler": "^12.1.1",
+    "@angular/core": "^12.1.1",
+    "@angular/forms": "^12.1.1",
+    "@angular/platform-browser": "^12.1.1",
+    "@angular/platform-browser-dynamic": "^12.1.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "rxjs": "^7.2.0",
+    "zone.js": "^0.11.4"
+  }
+}

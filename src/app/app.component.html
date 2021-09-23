@@ -1,0 +1,41 @@
+<div class="edge-buffer">
+    <div class="card flex mobile-column">
+        <button class="darkModeToggle" (click)="toggleDark()" title="Toggle Dark Mode"></button>
+        <div class="profile">
+            <img src="/assets/img/me-2d93d4e013f04f403e5b697c85602caf9f2f5ffa4ca5b3dcd02bfb3ba7788294.jpg" alt="a picture of me"/>
+        </div>
+        <div class="bio">
+            <h1><i18n key="title"></i18n></h1>
+            <p><i18n key="bio1"></i18n></p>
+            <p><i18n key="bio2"></i18n></p>
+            <p>
+                <a target="_blank" href="{{githubLink}}"><i18n key="githubLinkText"></i18n></a>
+                <i18n key="tech1"></i18n>
+            </p>
+            <p><i18n key="tech2"></i18n></p>
+            <ul>
+                <li *ngFor="let item of tech3">{{item}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="edge-buffer">
+    <div class="card">
+        <h2><i18n key="misc01"></i18n></h2>
+        <p><i18n key="misc02"></i18n></p>
+    </div>
+</div>
+
+<div class="edge-buffer">
+    <div class="card">
+        <gambling></gambling>
+    </div>
+</div>
+
+<div class="edge-buffer">
+    <youtube-q></youtube-q>
+</div>
+
+<my-footer></my-footer>
+<div class="background-img"></div>

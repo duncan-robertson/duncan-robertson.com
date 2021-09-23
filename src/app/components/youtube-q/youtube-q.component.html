@@ -1,0 +1,28 @@
+<div class="video-container" [hidden]="queue.length == 0">
+    <div class="video"></div>
+</div>
+<div class="video-container" [hidden]="queue.length > 0">
+    <p class="no-videos"><i18n key="youtubeq10"></i18n></p>
+</div>
+<div class="queue-container">
+    <h2><i18n key="youtubeq08"></i18n></h2>
+    <form [formGroup]="queueForm" (ngSubmit)="onSubmit($event)" novalidate>
+        <label for="youtube-url"><i18n key="youtubeq06"></i18n></label>
+        <input id="youtube-url" name="url" placeholder="{{youtubeq07}}" type="text" formControlName="videoControl"/>
+        <button type="submit" [disabled]="queueForm.invalid"><i18n key="youtubeq01"></i18n></button>
+        <div *ngIf="videoControl.invalid && (videoControl.dirty || videoControl.touched)" role="alert">
+            <p class="error" *ngIf="videoControl.errors?.pattern"><i18n key="youtubeq03"></i18n></p>
+        </div>
+    </form>
+    <div *ngIf="queue.length > 0">
+        <button type="button" (click)="clearQueue()"><i18n key="youtubeq09"></i18n></button>
+    </div>
+    <div class="queue-item" *ngFor="let video of queue; let i = index">
+        <img [src]="video.thumb" alt=""/>
+        <button type="button" (click)="deleteItem(video.id)"><i18n key="youtubeq02"></i18n></button>
+        <button type="button" *ngIf="i > 1" (click)="playNext(video.id)"><i18n key="youtubeq05"></i18n></button>
+        <button type="button" *ngIf="i > 0" (click)="playNow(video.id)"><i18n key="youtubeq04"></i18n></button>
+        <button type="button" *ngIf="i > 0" (click)="moveUp(video.id)">&#8593;</button>
+        <button type="button" *ngIf="i < queue.length - 1" (click)="moveDown(video.id)">&#8595;</button>
+    </div>
+</div>

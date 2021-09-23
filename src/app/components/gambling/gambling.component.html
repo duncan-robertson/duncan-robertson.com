@@ -1,0 +1,53 @@
+<h2><i18n key="gambling01"></i18n></h2>
+<h3><i18n key="gambling15"></i18n></h3>
+<ol>
+    <li><i18n key="gambling16"></i18n></li>
+    <li>
+        <i18n key="gambling17"></i18n>
+        <ul>
+            <li><i18n key="gambling18"></i18n></li>
+            <li><i18n key="gambling19"></i18n></li>
+            <li><i18n key="gambling20"></i18n></li>
+        </ul>
+    </li>
+    <li>
+        <i18n key="gambling21"></i18n>
+        <ul>
+            <li><i18n key="gambling22"></i18n></li>
+            <li><i18n key="gambling23"></i18n></li>
+        </ul>
+    </li>
+</ol>
+<p>
+    <i18n key="gambling02"></i18n> {{money | currency}}
+    <span *ngIf="state != 'BUY'"><i18n key="gambling14"></i18n> {{bet | currency}}</span>
+</p>
+<div *ngIf="state == 'BUY'">
+    <form [formGroup]="betForm" (ngSubmit)="onBet($event)" novalidate>
+        <input type="text" id="bet" (blur)="displayBetErrors = true" class="form-control" formControlName="betControl"/>
+        <button type="submit" [disabled]="betForm.invalid"><i18n key="gambling03"></i18n></button>
+        <div *ngIf="displayBetErrors && betControl.invalid && (betControl.dirty || betControl.touched)" role="alert">
+            <p class="error" *ngIf="betControl.errors?.required"><i18n key="gambling04"></i18n></p>
+            <p class="error" *ngIf="betControl.errors?.min"><i18n key="gambling05"></i18n></p>
+            <p class="error" *ngIf="betControl.errors?.pattern"><i18n key="gambling06"></i18n></p>
+            <p class="error" *ngIf="betControl.errors?.overBid"><i18n key="gambling07"></i18n></p>
+        </div>
+    </form>
+</div>
+
+<p *ngIf="state == 'PLAY'"><i18n key="gambling08"></i18n> {{point}}</p>
+
+<div *ngIf="die1 || die2">
+    <p><i18n key="gambling09"></i18n></p>
+    <dice [val]="die1"></dice> <dice [val]="die2"></dice>
+</div>
+
+<button [disabled]="processing" *ngIf="state == 'SET'" type="button" (click)="onRollSet()"><i18n key="gambling10"></i18n></button>
+<button [disabled]="processing" *ngIf="state == 'PLAY'" type="button" (click)="onRollPlay()"><i18n key="gambling10"></i18n></button>
+
+<p *ngIf="state == 'WIN'" class="win-message"><i18n key="gambling11"></i18n> {{payout | currency}}!</p>
+<p *ngIf="state == 'LOSE'" class="lose-message"><i18n key="gambling12"></i18n></p>
+
+<div *ngIf="state == 'WIN' || state == 'LOSE'">
+    <button type="button" (click)="playAgain()"><i18n key="gambling13"></i18n></button>
+</div>
