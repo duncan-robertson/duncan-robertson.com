@@ -50,7 +50,7 @@ export class GamblingComponent implements OnInit {
         return [
             Validators.required,
             Validators.min(MIN_BUY_IN),
-            Validators.pattern(/[1-9][0-9]*/),
+            Validators.pattern(/[1-9][\d]*/),
             this.overBidValidator,
         ]
     }

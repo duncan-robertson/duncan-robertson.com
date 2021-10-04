@@ -1,0 +1,6 @@
+<p *ngIf="cooldown" class="warn">API quota has been met, you can make more calls in 5 minutes</p>
+<div class="center">
+    <button type="button" [disabled]="loading" (click)="decrement()">-</button>
+    {{value}}
+    <button type="button" [disabled]="loading" (click)="increment()">+</button>
+</div>
